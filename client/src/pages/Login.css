@@ -1,0 +1,12 @@
+.img{
+    background-image: url('../assets/backj.jpg');
+    background-size: cover;
+    background-position: center ;
+
+}
+
+body {
+
+    background-size: cover;
+   
+}

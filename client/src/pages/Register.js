@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Inputs from '../components/Inputs'
 import { Registration } from '../redux/actions/authActions'
-
+import "./Login.css"
 function Register() {
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
@@ -24,12 +24,12 @@ function Register() {
   return (
     
       
-    <div className="container p-4 mt-4">
+    <div className="container p-4 mt-4 img">
          <div className="row justify-content-evenly mt-4">
             
             <div className="col-lg-6 col-md-12 mt-4">
                 <div className="d-flex">
-                    <i className="fa-solid fa-right-to-bracket fs-1 mx-2"></i> <h2>Register</h2>
+                    <i className="fa-solid fa-right-to-bracket fs-1 mx-2" style={{color:"white"}}></i> <h2 style={{color:"white"}}>Register</h2>
                 </div>
                 <div className="p-6 shadow-lg p-3 mb-5 bg-body rounded" style={{backgroundColor: "white"}}>
                     <form onSubmit={onSubmit}>

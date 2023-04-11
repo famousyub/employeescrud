@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Inputs from "../components/Inputs";
 import { LoginAction } from "../redux/actions/authActions";
-
+import "./Login.css"
 function Login() {
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
@@ -21,16 +21,16 @@ function Login() {
   dispatch(LoginAction(form, navigate))
   }
   return (
-    <div className="container p-4 mt-4">
-      <div className="row justify-content-evenly mt-4">
+    <div className="container p-4 mt-4 img" style={{backgroundImage:require("../assets/backj.jpg")}} >
+      <div className="row justify-content-evenly mt-4" >
         <div className="col-lg-6 col-md-12 mt-4">
           <div className="d-flex">
-            <i className="fa-solid fa-right-to-bracket fs-1 mx-2"></i>{" "}
-            <h2>Login</h2>
+            <i className="fa-solid fa-right-to-bracket fs-1 mx-2" style={{color:"white"}}></i>{" "}
+            <h2 style={{color:"white"}}>Login</h2>
           </div>
           <div
-            className="p-6 shadow-lg p-3 mb-5 bg-body rounded"
-            style={{ backgroundColor: "white" }}
+            className="p-6 shadow-lg p-3 mb-5 bg-body rounded "
+            style={{backgroundImage:require("../assets/backj.jpg") }}
           >
             <form onSubmit={onSubmit}>
               <Inputs

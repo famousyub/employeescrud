@@ -20,6 +20,12 @@ export  class  UpdateContact extends React.Component{
 
     state = {
 
+        user:{ fullName: "",
+        companyName: "",
+       
+        email: "",
+        phone: "",
+        adress: "",},
         fullName: "",
             companyName: "",
            
@@ -28,6 +34,10 @@ export  class  UpdateContact extends React.Component{
             adress: "",
 
     }
+
+  
+       
+   
     handleUserChange(event) {
         this.setState({ [event.target.name]: event.target.value});
      }
@@ -73,7 +83,22 @@ export  class  UpdateContact extends React.Component{
     componentDidMount(){
      //  alert(this.props. id);
        
+     
+     axios.get(`/api/contact/${this.props.id}`).then(res=>{
+        this.setState({
+            user:res.data,
+            fullName:this.state.user.fullName,
+            companyName: this.state.user.companyName,
+           
+            email: this.state.user.email,
+            phone: this.state.user.phone,
+            adress: this.state.user.adress,
 
+        })
+        console.log(res)
+    });
+
+  
        
     }
 
@@ -92,7 +117,7 @@ export  class  UpdateContact extends React.Component{
         <div className="row justify-content-evenly mt-4">
           <div className="col-lg-6 col-md-12 mt-4">
             <div className="d-flex">
-              <i className="fa-solid fa-user fs-1 mx-2"></i> <h2>update employee </h2>
+              <i className="fa-solid fa-user fs-1 mx-2"></i> <h2>Update contact </h2>
             </div>
             <div
               className="p-6 shadow-lg p-3 mb-5 bg-body rounded"
@@ -111,21 +136,21 @@ export  class  UpdateContact extends React.Component{
                             <div className="row">
                                 <div className="input-field col m6 s12">
                                     <input
-                                        placeholder="full Name"
+                                        placeholder="Full Name"
                                         name="fullName"
                                         type="text"
                                         className="validate form-group"
-                                        value={this.state.fullName}
+                                        value={this.state.user.fullName}
                                         onChange={this.handleUserChange}
                                         required />
                                 </div>
                                 <div className="input-field col m6 s12">
                                     <input
-                                        placeholder="company adress"
+                                        placeholder="CompanyName"
                                         name="companyName"
                                         type="text"
                                         className="validate form-group"
-                                        value={this.state.companyName}
+                                        value={this.state.user.companyName}
                                         onChange={this.handleUserChange}
                                         required />
                                 </div>
@@ -133,11 +158,11 @@ export  class  UpdateContact extends React.Component{
                             <div className="row">
                                 <div className="input-field col m12 s12">
                                     <input
-                                        placeholder="Address One"
+                                        placeholder="Address "
                                         name="address"
                                         type="text"
                                         className="validate  form-group"
-                                        value={this.state.address}
+                                        value={this.state.user.adress}
                                         onChange={this.handleUserChange}
                                         required />
                                 </div>
@@ -153,7 +178,7 @@ export  class  UpdateContact extends React.Component{
                                         name="email"
                                         type="email"
                                         className="validate form-group"
-                                        value={this.state.email}
+                                        value={this.state.user.email}
                                         onChange={this.handleUserChange}
                                         required />
                                 </div>
@@ -161,11 +186,11 @@ export  class  UpdateContact extends React.Component{
                             <div className="row">
                                 <div className="input-field col m8 s8">
                                     <input
-                                        placeholder="Phone"
+                                        placeholder="Phonenumber"
                                         name="phone"
                                         type="number"
                                         className="validate form-group"
-                                        value={this.state.phone}
+                                        value={this.state.user.phone}
                                         onChange={this.handleUserChange}
                                         required />
                                 </div>

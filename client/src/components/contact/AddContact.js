@@ -78,7 +78,7 @@ export class AddContact extends React.Component{
         <div className="row justify-content-evenly mt-4">
           <div className="col-lg-6 col-md-12 mt-4">
             <div className="d-flex">
-              <i className="fa-solid fa-user fs-1 mx-2"></i> <h2>add employee </h2>
+              <i className="fa-solid fa-user fs-1 mx-2"></i> <h2>add contact </h2>
             </div>
             <div
               className="p-6 shadow-lg p-3 mb-5 bg-body rounded"

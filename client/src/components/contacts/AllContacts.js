@@ -23,7 +23,9 @@ export default class AllContacts extends React.Component{
         loading: false ,
         isclicked :false ,
         edithiden:false ,
-        user_id : 0
+        user: {
+
+        }
     }
 
     handleclick = () =>{
@@ -34,18 +36,39 @@ export default class AllContacts extends React.Component{
          console.log(this.state.isclicked)
     }
 
-    handledelete(_id) {
+    handledelete = (_id) => {
+
+        alert(_id);
      //http://localhost:3001/api/removeContact/6435aa06f24146d7ec625474
-        axios.put(`/api/removeContact/${_id}`).then(res=>{
+       axios.put(`/api/removeContact/${_id}`).then(res=>{
             console.log(res);
+
+            alert("deleted");
+
+            window.location.reload();
 
             
           
         })
     }
 
-    saveId(id){
+
+      read=(_id) =>{
+        axios.get(`/api/contact/${_id}`).then(res=>{
+            this.setState({
+                user:res.data
+            })
+
+        });
+      }
+    saveId=(id)=>{
         localStorage.setItem("id",id);
+
+
+
+
+        
+       
 
        /* this.setState({
             edithiden: !this.state.edithiden,
@@ -165,7 +188,7 @@ export default class AllContacts extends React.Component{
 
          <td>
               
-              <button className="btn btn-info" onClick={this.saveId(user._id)
+              <button className="btn btn-info" onClick={()=>this.read(user._id)
               }   style={{backgroundColor:"#fff" , color: "black"}}>read</button>
               
                  </td>
@@ -175,8 +198,8 @@ export default class AllContacts extends React.Component{
     <td>
         
 
-    <button className="btn btn-info" onClick={this.saveId(user._id)
-    }   style={{backgroundColor:"green"}}>edit</button>
+    <button className="btn btn-info" onClick={()=>this.saveId(user._id)
+    }   style={{backgroundColor:"green"}} >edit</button>
     
                 
                 
@@ -187,7 +210,7 @@ export default class AllContacts extends React.Component{
          
     <td>
    
-   <button className="btn btn-danger"  >delete</button>
+   <button className="btn btn-danger"   onClick  ={()=>this.handledelete(user._id)}>delete</button>
 </td>
   
        </tr>
@@ -205,6 +228,54 @@ export default class AllContacts extends React.Component{
  
     
   
+  {
+    this.state.user ? (
+      
+
+        <div className="container">
+             <table className="table" style={{backgroundColor:"#fff"}}>
+<thead>
+  <tr>
+    <th>#Id</th>
+    <th>FullName</th>
+  
+    <th>Phone_number</th>
+
+   
+    <th>Company_name</th>
+
+    <th>
+        Address
+    </th>
+   
+
+ 
+    <th>Email</th>
+   </tr> 
+    </thead>
+<tbody id="myTable" style={{backgroundColor:"#fff", boxShadow:" 5px 10px 8px 10px #888888;",textShadow:"2px 3px #fff"}}>
+
+ <tr key={this.state.user._id} className= "tabdata"> 
+         <td >{this.state.user._id}</td>
+         <td>{this.state.user.fullName }</td>
+     
+         <td>{this.state.user.phone}</td>
+
+   
+      
+         <td>{this.state.user.companyName}</td>
+         <td>{this.state.user.adress}</td>
+      
+         <td>{this.state.user.email}</td>
+
+   </tr> 
+   </tbody>
+         </table>
+
+
+            </div>
+    )  : <p>loading user ..</p>
+  }
 
   {
     localStorage.getItem("id") ?  (
