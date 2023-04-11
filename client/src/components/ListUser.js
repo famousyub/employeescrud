@@ -51,7 +51,7 @@ export default class ListUser extends React.Component{
         <div className="col col-sm-6">
       
 
- <table className="table table-dark table-striped">
+ <table className="table">
 <thead>
   <tr>
     <th>id</th>

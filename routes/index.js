@@ -13,11 +13,24 @@ const { AddProfile, FindAllProfiles, FindSingleProfile, DeleteProfile } = requir
 
 
 const { AddEmployee,FindAllEmployees,FindEmployee,DeleteEmployee,UpdateEmployye} =require("../controllers/employee.controllers");
-
+const {   Addcontact,
+  FindAllContact,
+  FindContact,
+  DeleteContact,
+  UpdateContact} =require("../controllers/contact.controllers");
 /* users routes. */
 router.post("/register", Register);
 router.post("/login", Login);
 router.get('/alluser',Fetchalluser);
+
+router.get("/getAllcontacts",FindAllContact);
+router.put("/updateContact/:id",UpdateContact);
+
+router.put("/removeContact/:id",DeleteContact);
+router.get("/contact/:id",FindContact);
+
+router.post("/addContact", Addcontact);
+
 
 router.get("/getAllEmployees",FindAllEmployees);
 router.put("/updateEmployee/:id",UpdateEmployye);

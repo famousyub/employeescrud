@@ -3,7 +3,7 @@ import axios from "axios";
 
 import './addemployee.css';
 
-import './mu.css';
+//import './mu.css';
 import AllEmployees from "./AllEmployees";
 
 export class AddEmployee extends React.Component{
@@ -114,7 +114,7 @@ export class AddEmployee extends React.Component{
                                 </div>
                                 <div className="input-field col m6 s12">
                                     <input
-                                        placeholder="company Name"
+                                        placeholder="company adress"
                                         name="companyName"
                                         type="text"
                                         className="validate form-group"
@@ -138,7 +138,7 @@ export class AddEmployee extends React.Component{
                             <div className="row">
                                 <div className="input-field col m12 s12">
                                     <input
-                                        placeholder="Address Two"
+                                        placeholder="CompanyName"
                                         name="addressTwo"
                                         type="text"
                                         className="validate form-group"

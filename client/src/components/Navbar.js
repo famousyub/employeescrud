@@ -12,7 +12,12 @@ function Navbar({ user }) {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to="#">
-         my Contact 
+       
+
+        <b>
+        Contact Management Application
+
+        </b>
         </Link>
         <button
           className="navbar-toggler"
@@ -51,22 +56,52 @@ function Navbar({ user }) {
                 </>
                ): (
                 <>
+
+
+<Link className="btn btn-outline-primary item-list" to="/" hidden>
+            Home
+              </Link>
+
+
+
+
+
+
+              <Link className="btn btn-outline-primary item-list" to="/listcontacts">
+                List-contacts
+              </Link>
+
+             
+
+                
+         
+
+
+
+
+
+              <Link className="btn btn-outline-primary item-list" to="/listemployee" hidden>
+                list-employees
+              </Link>
+<Link className="btn btn-outline-primary item-list" to="/listuser">
+                List-users
+              </Link>
+             
+
+             
+              <Link className="btn btn-outline-primary item-list" to="/addemplyee" hidden>
+                add-contact
+              </Link>
+              <Link className="btn btn-outline-primary" to="/update">
+                 Update-profile
+              </Link>
+
+
                 <Link className="btn btn-outline-primary"  to="#" onClick={LogoutHanlder}>
                 Logout
               </Link>
 
-              <Link className="btn btn-outline-primary" to="/listuser">
-                list-users
-              </Link>
-              <Link className="btn btn-outline-primary" to="/listemployee">
-                list-employee
-              </Link>
-              <Link className="btn btn-outline-primary" to="/addemplyee">
-                add-employee
-              </Link>
-              <Link className="btn btn-outline-primary" to="/">
-                 update
-              </Link>
+            
               </>
               
                )

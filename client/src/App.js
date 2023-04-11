@@ -25,6 +25,8 @@ import ListUser from './components/ListUser';
 import AllEmployees from "./components/AllEmployees";
 import { AddEmployee } from './components/AddEmployee';
 import EmployeeDetails from './components/EmployeeDetails';
+import AllContacts from './components/contacts/AllContacts';
+import { UpdateContact } from './components/contact/UpdateContact';
 
  if(window.localStorage.jwt){
    const decode = jwt_decode(window.localStorage.jwt)
@@ -52,7 +54,7 @@ function App() {
         
     
      
-          <Route path="/" element={
+          <Route path="/update" element={
           <PrivateRouter user={user}>
             <Profile />
           </PrivateRouter>
@@ -63,8 +65,24 @@ function App() {
           </PrivateRouter>
         } />
 
+<Route path="/listcontacts" element={
+          <PrivateRouter user={user}>
+            <AllContacts />
+          </PrivateRouter>
+        } />
 
 
+<Route path="/editcontact/:id" element={
+          <PrivateRouter user={user}>
+            <UpdateContact />
+          </PrivateRouter>
+        } />
+
+<Route path="/" element={
+          <PrivateRouter user={user}>
+            <AllEmployees />
+          </PrivateRouter>
+        } />
 
 <Route path="/listemployee" element={
           <PrivateRouter user={user}>

@@ -2,8 +2,10 @@ import React from "react";
 
 import axios from "axios" ;
 
-import "./tablempl.css";
+//import "./tablempl.css";
 import Admin from "../pages/Admin";
+import { AddEmployee } from "./AddEmployee";
+import MyModalempl from "./MyModalempl";
 
 
 export default class AllEmployees extends React.Component{
@@ -16,7 +18,16 @@ export default class AllEmployees extends React.Component{
 
     state = {
         employees : [],
-        loading: false 
+        loading: false ,
+        isclicked :false 
+    }
+
+    handleclick = () =>{
+
+         this.setState({
+            isclicked: !this.state.isclicked
+         });
+         console.log(this.state.isclicked)
     }
 
     handledelete(_id) {
@@ -50,10 +61,19 @@ export default class AllEmployees extends React.Component{
 <div className="container">
 
 
-
 <input id="myInput" type="text" placeholder="Search.." />
 
- <table className="table table-dark table-striped">
+
+<div className="col col-lg-9" dir="left">
+           
+<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  add contact 
+</button>
+
+<MyModalempl />
+</div>
+
+ <table className="table" style={{backgroundColor:"#fff", boxShadow:" 70px 10px grey"}}>
 <thead>
   <tr>
     <th>id</th>
@@ -63,7 +83,7 @@ export default class AllEmployees extends React.Component{
 
     <th>addressOne</th>
     <th>companyName</th>
-    <th>addressTwo</th>
+    <th>companyName</th>
 
     <th>state</th>
     <th>zip</th>
@@ -78,7 +98,7 @@ export default class AllEmployees extends React.Component{
 
   </tr>
 </thead>
-<tbody id="myTable">
+<tbody id="myTable" style={{backgroundColor:"#ffffef", boxShadow:" 5px 10px 8px 10px #888888;",textShadow:"2px 3px #fff"}}>
     {this.state.employees.map(user=>(
          <tr key={user._id} className= "tabdata"> 
          <td >{user._id}</td>
@@ -107,10 +127,19 @@ export default class AllEmployees extends React.Component{
 
 </tbody>
 </table>
+{
+    this.state.isclicked ?  (
 
+        <div>
+              <Admin/>
+              <button className="btn btn-info" onClick={this.handleclick}>hide  profile</button>
+            </div>
+
+    ) : <button className="btn btn-info"  onClick={this.handleclick} >show profile</button>
+}
  
     
-    <Admin/>
+  
 
  </div>
 
